@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A16876231CB6919000BB5EBB /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = A16876221CB6919000BB5EBB /* main.c */; };
+		A16876B71CBFCA6C00BB5EBB /* FastLED.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A16876B51CBFCA6C00BB5EBB /* FastLED.cpp */; };
+		A16876BA1CC0066700BB5EBB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A16876B91CC0066700BB5EBB /* main.cpp */; };
+		A1B396CC1CC2FF5C00BB5EBB /* hsv2rgb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1B396CA1CC2FF5C00BB5EBB /* hsv2rgb.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +26,20 @@
 
 /* Begin PBXFileReference section */
 		A168761F1CB6919000BB5EBB /* FastLED */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FastLED; sourceTree = BUILT_PRODUCTS_DIR; };
-		A16876221CB6919000BB5EBB /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		A16876291CB7087E00BB5EBB /* FastledDefinitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FastledDefinitions.h; sourceTree = "<group>"; };
+		A16876B51CBFCA6C00BB5EBB /* FastLED.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FastLED.cpp; sourceTree = "<group>"; };
+		A16876B61CBFCA6C00BB5EBB /* FastLED.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FastLED.hpp; sourceTree = "<group>"; };
+		A16876B91CC0066700BB5EBB /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		A16876BB1CC14ACB00BB5EBB /* lib8tion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lib8tion.h; sourceTree = "<group>"; };
+		A16876BC1CC14BC000BB5EBB /* pixeltypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pixeltypes.h; sourceTree = "<group>"; };
+		A16876BD1CC14CB800BB5EBB /* math8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math8.h; sourceTree = "<group>"; };
+		A16876BE1CC14CF000BB5EBB /* scale8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scale8.h; sourceTree = "<group>"; };
+		A16876BF1CC14D1D00BB5EBB /* random8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = random8.h; sourceTree = "<group>"; };
+		A16876C01CC14D4300BB5EBB /* trig8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trig8.h; sourceTree = "<group>"; };
+		A1B396C51CC2F4D800BB5EBB /* colorutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = colorutils.h; sourceTree = "<group>"; };
+		A1B396C61CC2F5F700BB5EBB /* FastLED.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FastLED.h; sourceTree = "<group>"; };
+		A1B396CA1CC2FF5C00BB5EBB /* hsv2rgb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hsv2rgb.cpp; sourceTree = "<group>"; };
+		A1B396CB1CC2FF5C00BB5EBB /* hsv2rgb.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = hsv2rgb.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +72,20 @@
 		A16876211CB6919000BB5EBB /* FastLED */ = {
 			isa = PBXGroup;
 			children = (
-				A16876221CB6919000BB5EBB /* main.c */,
+				A16876291CB7087E00BB5EBB /* FastledDefinitions.h */,
+				A16876B51CBFCA6C00BB5EBB /* FastLED.cpp */,
+				A16876B61CBFCA6C00BB5EBB /* FastLED.hpp */,
+				A16876B91CC0066700BB5EBB /* main.cpp */,
+				A16876BB1CC14ACB00BB5EBB /* lib8tion.h */,
+				A16876BC1CC14BC000BB5EBB /* pixeltypes.h */,
+				A16876BD1CC14CB800BB5EBB /* math8.h */,
+				A16876BE1CC14CF000BB5EBB /* scale8.h */,
+				A16876BF1CC14D1D00BB5EBB /* random8.h */,
+				A16876C01CC14D4300BB5EBB /* trig8.h */,
+				A1B396C51CC2F4D800BB5EBB /* colorutils.h */,
+				A1B396C61CC2F5F700BB5EBB /* FastLED.h */,
+				A1B396CA1CC2FF5C00BB5EBB /* hsv2rgb.cpp */,
+				A1B396CB1CC2FF5C00BB5EBB /* hsv2rgb.hpp */,
 			);
 			path = FastLED;
 			sourceTree = "<group>";
@@ -88,6 +116,9 @@
 		A16876171CB6919000BB5EBB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Andreas Pleschutznig";
 				TargetAttributes = {
@@ -118,7 +149,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A16876231CB6919000BB5EBB /* main.c in Sources */,
+				A16876B71CBFCA6C00BB5EBB /* FastLED.cpp in Sources */,
+				A16876BA1CC0066700BB5EBB /* main.cpp in Sources */,
+				A1B396CC1CC2FF5C00BB5EBB /* hsv2rgb.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +272,7 @@
 				A16876281CB6919000BB5EBB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
