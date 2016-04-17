@@ -14,6 +14,8 @@
 #include <string.h>         //strlen
 #include <sys/socket.h>     //socket
 #include <arpa/inet.h>      //inet_addr
+#include <signal.h>         // signal definitions
+#include <unistd.h>
 
 #include "lib8tion.h"
 #include "pixeltypes.h"
@@ -31,6 +33,8 @@ private:
     unsigned char EndOfText[2];
 public:
     int sock;
+    char server[80];                        // how can I reach the LED server?
+    uint16_t networkPort;
     uint16_t NumLeds;
     CRGB *leds;
     
@@ -39,7 +43,10 @@ public:
     }
     
     int Connect(char *ip) {
+        signal(SIGPIPE, SIG_IGN);
         sock = connect8266((char *)ip, (uint16_t) 0xfa57);
+        strcpy(server, ip);
+        networkPort = 0xfa57;
         return(sock);
     }
     
@@ -469,8 +476,10 @@ public:
                 
         if( send(sock , outMessage , 6 , 0) < 0)
         {
-            puts("Send failed");
-            //            return 1;
+            puts("SetNumLeds() failed, reconnecting ...");
+            close(sock);
+            delay(1000);                // Sanity delay;
+            Connect(server);
         }
 
     }
@@ -486,8 +495,10 @@ public:
         
         if( send(sock , outMessage , 5 , 0) < 0)
         {
-            puts("Send failed");
-            //            return 1;
+            puts("setBrightness() failed, reconnecting ...");
+            close(sock);
+            delay(1000);                // Sanity delay;
+            Connect(server);
         }
         
     }
@@ -503,8 +514,10 @@ public:
         
         if( send(sock , outMessage , 4 , 0) < 0)
         {
-            puts("Send failed");
-            //            return 1;
+            puts("show() command failed, reconnecting ...");
+            close(sock);
+            delay(1000);                // Sanity delay;
+            Connect(server);
         }
 
         
@@ -519,15 +532,8 @@ public:
         uint16_t numBytes;              // How long is the message?
         uint16_t xfer;
         
-        // We will work under the assumption that since we always have to transfer the whole CRGB[]
-        // the most expensive part of this transaction is the physical transfer vie the network
-        // Further we assume that the host we are on has enough horsepower available to run both encoders
-        // and after that we will check which transfer is cheaper and select this one, marking in the header
-        // for the microcontroller, so it can be properly decoded.
-        
-//        RleEncodePass1((unsigned char *)leds, NumLeds*3, rleMessage1, &outLength1);
         RleEncodePass2((unsigned char *)leds, NumLeds*3, rleMessage2, &outLength2);
-        //Send some data
+        //Send the data
         if ( (NumLeds*3) < outLength2){
             header = UNCOMPRESSED;
             rleMessage = (unsigned char *)leds;
@@ -548,8 +554,10 @@ public:
         memcpy(&outMessage[6], rleMessage, outLength );                         // send packet identifier
         if( send(sock , outMessage , outLength + 6 , 0) < 0)
         {
-            puts("Send failed");
-            //            return 1;
+            puts("transfer() failed, reconnecting...");
+            close(sock);
+            delay(1000);                // Sanity delay;
+            Connect(server);
         }
         
         
