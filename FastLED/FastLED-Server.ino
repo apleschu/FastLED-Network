@@ -8,8 +8,8 @@
 #define CLOCK_PIN 14
 CRGB leds[3000];              // define a led array long enough
 
-const char* ssid = "FSM";
-const char* password = "15Bananas";
+const char* ssid = "*****";
+const char* password = "********";
 
 WiFiServer server(0xfa57);
 WiFiClient Client;
